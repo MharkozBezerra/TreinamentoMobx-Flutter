@@ -21,6 +21,12 @@ abstract class ControllerBase with Store {
   @observable
   String _senha = '';
 
+  @observable
+  bool carregando = false;
+
+  @observable
+  bool usuarioLogado = false;
+
   @action
   void setEmail(String v) => _email = v;
 
@@ -29,6 +35,16 @@ abstract class ControllerBase with Store {
 
   @computed
   bool get formularioValido => _email.length >= 5 && _senha.length >= 5;
+
+  @action
+  Future<void> logar() async {
+    carregando = true;
+    // simula uma requisição
+    await Future.delayed(Duration(seconds: 10));
+
+    carregando = false;
+    usuarioLogado = true;
+  }
 
   @action
   incrementar() {

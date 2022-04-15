@@ -1,16 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:mobx/mobx.dart';
 import 'package:pessoal_mobx/controller.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+class HomeValidacaoFormulario extends StatefulWidget {
+  const HomeValidacaoFormulario({Key? key}) : super(key: key);
 
   @override
-  State<Home> createState() => _HomeState();
+  State<HomeValidacaoFormulario> createState() =>
+      _HomeValidacaoFormularioState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeValidacaoFormularioState extends State<HomeValidacaoFormulario> {
   final Controller _controller = Controller();
+  late ReactionDisposer reactionDisposer;
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+
+    reactionDisposer = reaction(
+      (_) => _controller.formularioValido,
+      (valor) {},
+    );
+  }
+
+  @override
+  void dispose() {
+    reactionDisposer();
+    // TODO: implement dispose
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,13 +90,17 @@ class _HomeState extends State<Home> {
               child: Observer(
                 builder: (_) {
                   return ElevatedButton(
-                    child: const Text(
-                      "Logar",
-                      style: TextStyle(color: Colors.white, fontSize: 30),
-                    ),
+                    child: _controller.carregando
+                        ? const CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation(Colors.white),
+                          )
+                        : const Text(
+                            "Logar",
+                            style: TextStyle(color: Colors.white, fontSize: 30),
+                          ),
                     onPressed: _controller.formularioValido
                         ? () {
-                            print("Vamos dizer que você clicou no botão");
+                            _controller.logar();
                           }
                         : null,
                   );
