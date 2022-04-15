@@ -16,6 +16,28 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 
-Para gerar a versão,  rode os comandos:
+ Dependencias:
+ - [Mobx][https://pub.dev/packages/mobx] : # Gerenciador de estado do projeto
+ - [Flutter Mobx][https://pub.dev/packages/flutter_mobx] : #Necess´ario para rodar o projeto mobx no mobile.
+ - [Build Runner](https://pub.dev/packages/build_runner) : #Rodar o projeto☻
+ - [MobX CodeGen](https://pub.dev/packages/mobx_codegen) : #Reescreve o co´digo gereado pelo MobX
 
- - flutter pub run build_runner build
+
+ ```dart
+    //  Use as informações em pubspec.yaml
+    dependencies:
+        mobx: ^2.0.6+1
+        flutter_mobx: ^2.0.4
+
+    dev_dependencies:
+        # Usados somente para desenvolvimento
+        mobx_codegen: ^2.0.5+2
+        build_runner: ^2.1.9
+ ```
+
+ Para gerar a versão,  rode os comandos:
+
+ - flutter pub run build_runner build - modo produção
+ - flutter pub run build_runner watch - mode em tempo real, alterou rodou
+ - flutter pub run build_runner serve - o memso que watch porem funciona melhor, para teste dierecinado a porta 8080 e 8081 da aplicação,
+ - flutter pub run build_runner teste - Roda uma simples contrução de teste 
