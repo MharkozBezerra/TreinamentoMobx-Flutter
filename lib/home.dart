@@ -76,7 +76,7 @@ class _HomeState extends State<Home> {
                     ),
                     onPressed: _controller.formularioValido
                         ? () {
-                            print("Vamos dizer que você clicou no botão");
+                            //print("Vamos dizer que você clicou no botão");
                           }
                         : null,
                   );

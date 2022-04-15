@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
 import 'package:pessoal_mobx/controller.dart';
+import 'package:pessoal_mobx/home.principal.list.dart';
 
 class HomeValidacaoFormulario extends StatefulWidget {
   const HomeValidacaoFormulario({Key? key}) : super(key: key);
@@ -16,18 +17,25 @@ class _HomeValidacaoFormularioState extends State<HomeValidacaoFormulario> {
   late ReactionDisposer reactionDisposer;
   @override
   void didChangeDependencies() {
+    // ignore: todo
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
 
     reactionDisposer = reaction(
       (_) => _controller.formularioValido,
-      (valor) {},
+      (usuarioLogado) {
+        if (usuarioLogado != null)
+          // ignore: curly_braces_in_flow_control_structures
+          Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (_) => const Principal()));
+      },
     );
   }
 
   @override
   void dispose() {
     reactionDisposer();
+    // ignore: todo
     // TODO: implement dispose
     super.dispose();
   }

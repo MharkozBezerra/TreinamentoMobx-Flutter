@@ -8,9 +8,9 @@ abstract class ControllerBase with Store {
   ControllerBase() {
     // Executa sempre que um observável tem seu estado alterado.
     autorun((_) {
-      print("Email: ${_email}");
-      print("Senha: ${_senha}");
-      print("Valido: ${formularioValido}");
+      // print("Email: ${_email}");
+      // print("Senha: ${_senha}");
+      // print("Valido: ${formularioValido}");
     });
   }
   @observable
@@ -40,7 +40,7 @@ abstract class ControllerBase with Store {
   Future<void> logar() async {
     carregando = true;
     // simula uma requisição
-    await Future.delayed(Duration(seconds: 10));
+    await Future.delayed(const Duration(seconds: 10));
 
     carregando = false;
     usuarioLogado = true;
