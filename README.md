@@ -41,3 +41,6 @@ samples, guidance on mobile development, and a full API reference.
  - flutter pub run build_runner watch - mode em tempo real, alterou rodou
  - flutter pub run build_runner serve - o memso que watch porem funciona melhor, para teste dierecinado a porta 8080 e 8081 da aplicação,
  - flutter pub run build_runner teste - Roda uma simples contrução de teste 
+
+ ## [NESSE COMMIT MOSTRO COMO CRIAR UMA VALIDAÇÃO SIMPLES DE UM FORMULÁRIO ] ##
+ use o arquivo: home.validacao.formulario.dart
