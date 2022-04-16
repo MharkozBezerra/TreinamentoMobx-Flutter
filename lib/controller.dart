@@ -22,6 +22,9 @@ abstract class ControllerBase with Store {
   String _senha = '';
 
   @observable
+  String nome = '';
+
+  @observable
   bool carregando = false;
 
   @observable
@@ -44,6 +47,7 @@ abstract class ControllerBase with Store {
 
     carregando = false;
     usuarioLogado = true;
+    nome = "Mharkoz Bezerra";
   }
 
   @action

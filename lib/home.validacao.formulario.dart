@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
 import 'package:pessoal_mobx/controller.dart';
 import 'package:pessoal_mobx/home.principal.list.dart';
+import 'package:provider/provider.dart';
 
 class HomeValidacaoFormulario extends StatefulWidget {
   const HomeValidacaoFormulario({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class HomeValidacaoFormulario extends StatefulWidget {
 }
 
 class _HomeValidacaoFormularioState extends State<HomeValidacaoFormulario> {
-  final Controller _controller = Controller();
+  late Controller _controller;
   late ReactionDisposer reactionDisposer;
   @override
   void didChangeDependencies() {
@@ -21,10 +22,11 @@ class _HomeValidacaoFormularioState extends State<HomeValidacaoFormulario> {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
 
+    _controller = Provider.of<Controller>(context);
     reactionDisposer = reaction(
       (_) => _controller.formularioValido,
       (usuarioLogado) {
-        if (usuarioLogado != null)
+        if (usuarioLogado == true)
           // ignore: curly_braces_in_flow_control_structures
           Navigator.of(context).pushReplacement(
               MaterialPageRoute(builder: (_) => const Principal()));
@@ -99,18 +101,18 @@ class _HomeValidacaoFormularioState extends State<HomeValidacaoFormulario> {
                 builder: (_) {
                   return ElevatedButton(
                     child: _controller.carregando
-                        ? const CircularProgressIndicator(
+                        ? CircularProgressIndicator(
                             valueColor: AlwaysStoppedAnimation(Colors.white),
                           )
-                        : const Text(
+                        : Text(
                             "Logar",
                             style: TextStyle(color: Colors.white, fontSize: 30),
                           ),
-                    onPressed: _controller.formularioValido
-                        ? () {
+                    onPressed: _controller.carregando
+                        ? null
+                        : () {
                             _controller.logar();
-                          }
-                        : null,
+                          },
                   );
                 },
               ),

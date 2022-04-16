@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:pessoal_mobx/controller.dart';
 import 'package:pessoal_mobx/controller.princial.dart';
+import 'package:provider/provider.dart';
 
 class Principal extends StatefulWidget {
   const Principal({Key? key}) : super(key: key);
@@ -46,11 +48,14 @@ class _PrincipalState extends State<Principal> {
 
   @override
   Widget build(BuildContext context) {
+    final _controller = Provider.of<Controller>(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Tarefas",
-          style: TextStyle(fontSize: 25, color: Colors.white),
+        title: Observer(
+          builder: (_) {
+            return Text(_controller.nome);
+          },
         ),
       ),
       body: Observer(

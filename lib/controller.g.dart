@@ -62,6 +62,21 @@ mixin _$Controller on ControllerBase, Store {
     });
   }
 
+  final _$nomeAtom = Atom(name: 'ControllerBase.nome');
+
+  @override
+  String get nome {
+    _$nomeAtom.reportRead();
+    return super.nome;
+  }
+
+  @override
+  set nome(String value) {
+    _$nomeAtom.reportWrite(value, super.nome, () {
+      super.nome = value;
+    });
+  }
+
   final _$carregandoAtom = Atom(name: 'ControllerBase.carregando');
 
   @override
@@ -139,6 +154,7 @@ mixin _$Controller on ControllerBase, Store {
   String toString() {
     return '''
 contador: ${contador},
+nome: ${nome},
 carregando: ${carregando},
 usuarioLogado: ${usuarioLogado},
 formularioValido: ${formularioValido}

@@ -18,16 +18,17 @@ samples, guidance on mobile development, and a full API reference.
 
  Dependencias:
  - [Mobx][https://pub.dev/packages/mobx] : # Gerenciador de estado do projeto
- - [Flutter Mobx][https://pub.dev/packages/flutter_mobx] : #Necess´ario para rodar o projeto mobx no mobile.
- - [Build Runner](https://pub.dev/packages/build_runner) : #Rodar o projeto☻
- - [MobX CodeGen](https://pub.dev/packages/mobx_codegen) : #Reescreve o co´digo gereado pelo MobX
-
+ - [Flutter Mobx][https://pub.dev/packages/flutter_mobx] : # Necess´ario para rodar o projeto mobx no mobile.
+ - [Build Runner](https://pub.dev/packages/build_runner) : # Rodar o projeto☻
+ - [MobX CodeGen](https://pub.dev/packages/mobx_codegen) : # Reescreve o co´digo gereado pelo MobX
+ - [Provider] (https://pub.dev/packages/provider)        : # Gerenciados e distribuidor de classes
 
  ```dart
     //  Use as informações em pubspec.yaml
     dependencies:
         mobx: ^2.0.6+1
         flutter_mobx: ^2.0.4
+        provider: ^6.0.2
 
     dev_dependencies:
         # Usados somente para desenvolvimento
@@ -42,5 +43,5 @@ samples, guidance on mobile development, and a full API reference.
  - flutter pub run build_runner serve - o memso que watch porem funciona melhor, para teste dierecinado a porta 8080 e 8081 da aplicação,
  - flutter pub run build_runner teste - Roda uma simples contrução de teste 
 
- ## [NESSE COMMIT MOSTRO COMO CRIAR UMA VALIDAÇÃO SIMPLES DE UM FORMULÁRIO ] ##
+ ## (ValoresComputados) [NESSE COMMIT MOSTRO COMO CRIAR UMA VALIDAÇÃO SIMPLES DE UM FORMULÁRIO ] ##
  use o arquivo: home.validacao.formulario.dart
